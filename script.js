@@ -1,10 +1,10 @@
 // making a simple rock-paper-scissors game
 
 //1)first function getComputerChoice() will return rock paper or scissor
-//we will pass this function as 2nd argument of firstRound()
+//I will pass this function as 2nd argument of firstRound()
 
 function getComputerChoice(){
-    //gets a random word from the array and return it with a string saying I picked rock paper or scissors this time
+    //gets a random value from the array and returns the value that was picked
     let MoveSet =["rock","paper","scissors"];
     let aiMovePicked=MoveSet[Math.floor(Math.random()*MoveSet.length)]; //get a random word from the array MoveSet
 
@@ -19,7 +19,7 @@ let playerMovePickedLower=playerMovePicked.toLowerCase() // makes the user input
 
 // 2) now we create a function to play a single round of the game, it will take 2 parameters
 function firstRound(playerselection,computerselection) {
-    //displays what the player and the computer picked,compares them and returns a string saying you won or lost
+    //displays what the player and the computer picked,compares them and returns a string saying you won,lost or tied.
     console.log(`the player has chosen ${playerselection}`);
     console.log(`the computer has chosen ${computerselection}`);
     
