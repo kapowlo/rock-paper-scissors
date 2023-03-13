@@ -18,44 +18,44 @@ let playerMovePickedLower=playerMovePicked.toLowerCase() // makes the user input
 
 
 // 2) now we create a function to play a single round of the game, it will take 2 parameters
-function firstRound(playerselection,computerselection) {
+function playRound(playerSelection,computerSelection) {
     //displays what the player and the computer picked,compares them and returns a string saying you won,lost or tied.
-    console.log(`the player has chosen ${playerselection}`);
-    console.log(`the computer has chosen ${computerselection}`);
+    console.log(`the player has chosen ${playerSelection}`);
+    console.log(`the computer has chosen ${computerSelection}`);
     
-    if(playerselection==="rock" && computerselection==="paper"){
+    if(playerSelection==="rock" && computerSelection==="paper"){
         return "you lost! paper beats rock";
     }
     
-    else if (playerselection==="rock" && computerselection==="scissors")
+    else if (playerSelection==="rock" && computerSelection==="scissors")
     {
         return "you won! rock beats scissors  ";
     }
-    else if (playerselection==="paper" && computerselection==="rock"){
+    else if (playerSelection==="paper" && computerSelection==="rock"){
         return "you won! paper beats rock";
 
     }
-    else if (playerselection==="paper" && computerselection==="scissors"){
+    else if (playerSelection==="paper" && computerSelection==="scissors"){
         return "you lost! scissors beats  paper ";
 
     }
-    else if (playerselection==="scissors" && computerselection==="paper"){
+    else if (playerSelection==="scissors" && computerSelection==="paper"){
         return "you won! scissors beats  paper ";
 
     }
-    else if (playerselection==="scissors" && computerselection==="rock"){
+    else if (playerSelection==="scissors" && computerSelection==="rock"){
         return "you lost! rock beats scissors  ";
 
     }
-    else if (playerselection==="scissors" && computerselection==="scissors"){
+    else if (playerSelection==="scissors" && computerSelection==="scissors"){
         return "Tie game! you both picked scissors ";
 
     }
-    else if (playerselection==="paper" && computerselection==="paper"){
+    else if (playerSelection==="paper" && computerSelection==="paper"){
         return "Tie game! you both picked paper";
 
     }
-    else if (playerselection==="rock" && computerselection==="rock"){
+    else if (playerSelection==="rock" && computerSelection==="rock"){
         return "Tie game! you both picked rock ";
 
     }
@@ -63,4 +63,5 @@ function firstRound(playerselection,computerselection) {
 }
 //for the first parameter ill pass in the variable playerMovePickedLower as 1st argument
 // for the second parameter I'll pass in the function getComputerChoice as 2nd argument
-console.log(firstRound(playerMovePickedLower,getComputerChoice()))
+console.log(playRound(playerMovePickedLower,getComputerChoice()))
+
