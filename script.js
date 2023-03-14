@@ -12,19 +12,16 @@ function getComputerChoice(){
 }
 
 
-// first ill create a variable that asks the user via prompt to choose: rock, paper or scissors
-let playerMovePicked=prompt("pick one option between rock,paper or scissors,")
-let playerMovePickedLower=playerMovePicked.toLowerCase() // makes the user input lower case
-
-
 // 2) now we create a function to play a single round of the game, it will take 2 parameters
 function playRound(playerSelection,computerSelection) {
     //displays what the player and the computer picked,compares them and returns a string saying you won,lost or tied.
+   
     console.log(`the player has chosen ${playerSelection}`);
     console.log(`the computer has chosen ${computerSelection}`);
     
     if(playerSelection==="rock" && computerSelection==="paper"){
         return "you lost! paper beats rock";
+        
     }
     
     else if (playerSelection==="rock" && computerSelection==="scissors")
@@ -61,7 +58,22 @@ function playRound(playerSelection,computerSelection) {
     }
     
 }
-//for the first parameter ill pass in the variable playerMovePickedLower as 1st argument
-// for the second parameter I'll pass in the function getComputerChoice as 2nd argument
-console.log(playRound(playerMovePickedLower,getComputerChoice()))
 
+
+//I'll make a function that plays five rounds of the game
+//I'll create a function called game() that will have a for loop that calls playRound() 5 times
+//the user will also be asked 5 times to chose between rock paper scissors
+function game(){  
+//this function will allow us to play five rounds of rock paper scissors 
+// by prompting the user for an input and by calling playRound() five times inside of a for loop 
+
+for (let i=0;i<5;i++){
+    let playerMovePicked=prompt("pick one option between rock,paper or scissors,")
+    let playerMovePickedLower=playerMovePicked.toLowerCase()
+    console.log("\n")// blank line to separate each rounds
+    console.log (playRound(playerMovePickedLower,getComputerChoice()))
+    
+}
+
+}
+game()
