@@ -21,47 +21,51 @@ function playRound(playerSelection,computerSelection) {
     
     if(playerSelection==="rock" && computerSelection==="paper"){
         console.log( "you lost! paper beats rock"); // put this console is func aiscore or playerscore
-        return aiScore() ;
+       return aiScore() ;
     }
     
     else if (playerSelection==="rock" && computerSelection==="scissors")
     {
         console.log( "you won! rock beats scissors  ");
-        return playerScore() ;
+       return  playerScore() ;
     }
     else if (playerSelection==="paper" && computerSelection==="rock"){
         console.log( "you won! paper beats rock");
-        return playerScore() ;
+       return playerScore() ;
 
     }
     else if (playerSelection==="paper" && computerSelection==="scissors"){
         console.log( "you lost! scissors beats  paper ");
-        return aiScore() ;
+       return aiScore() ;
     }
     else if (playerSelection==="scissors" && computerSelection==="paper"){
         console.log( "you won! scissors beats  paper ");
-        return playerScore() ;
+      return playerScore() ;
 
     }
     else if (playerSelection==="scissors" && computerSelection==="rock"){
         console.log( "you lost! rock beats scissors  ");
-        return aiScore() ;
+      return aiScore() ;
     }
     else if (playerSelection==="scissors" && computerSelection==="scissors"){
-       return "Tie game! you both picked scissors ";
+      return "Tie game! you both picked scissors ";
         
     }
     else if (playerSelection==="paper" && computerSelection==="paper"){
-        return "Tie game! you both picked paper";
+      return "Tie game! you both picked paper";
        
 
     }
     else if (playerSelection==="rock" && computerSelection==="rock"){
-        return "Tie game! you both picked rock ";
+       return "Tie game! you both picked rock ";
         
 
     }
-  
+    else if(playerSelection !=="rock","paper","scissors"){ // check for spelling mistakes
+        console.log(`you entered the word ${playerSelection}`)
+        return"make sure you spelled the word 'rock' 'paper' or 'scissors' correctly"
+    }
+    
 }
 let aiPoints =0;
 let playerPoints = 0;
@@ -93,12 +97,3 @@ for (let i=0;i<5;i++){
 }
 game()
 
-// compare to see who won 
-if (playerScore() > aiScore()){
-    console.log("\n")
-    console.log("the player won the most rounds!!!!");
-  }
-  else if (aiScore() > playerScore()){
-    console.log("\n")
-    console.log ("the ai won the most rounds!!!!!");
-  }
