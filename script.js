@@ -12,6 +12,10 @@ function getComputerChoice(){
 }
 
 
+//create global variables that will store player and ai points and at the end we will show a winner
+let aiPoints =0; // when computer wins a round add + 1 to this inside of playRound()
+let playerPoints=0;// when player wins a round add + 1 to this inside of playRound()
+
 // 2) now we create a function to play a single round of the game, it will take 2 parameters
 function playRound(playerSelection,computerSelection) {
     //displays what the player and the computer picked,compares them and returns a string saying you won,lost or tied.
@@ -21,31 +25,37 @@ function playRound(playerSelection,computerSelection) {
     
     if(playerSelection==="rock" && computerSelection==="paper"){
         console.log( "you lost! paper beats rock"); // put this console is func aiscore or playerscore
-       return aiScore() ;
+        console.log(`updating the score of the computer ${aiPoints +=1} points`)
+        
     }
     
     else if (playerSelection==="rock" && computerSelection==="scissors")
     {
         console.log( "you won! rock beats scissors  ");
-       return  playerScore() ;
+        console.log(`updating the score of the player ${playerPoints +=1} points`)
+        
     }
     else if (playerSelection==="paper" && computerSelection==="rock"){
         console.log( "you won! paper beats rock");
-       return playerScore() ;
+        console.log(`updating the score of the player ${playerPoints +=1} points`)
+        
 
     }
     else if (playerSelection==="paper" && computerSelection==="scissors"){
-        console.log( "you lost! scissors beats  paper ");
-       return aiScore() ;
+        console.log( "you lost! scissors beats paper ");
+        console.log(`updating the score of the computer ${aiPoints +=1} points`)
+        
     }
     else if (playerSelection==="scissors" && computerSelection==="paper"){
         console.log( "you won! scissors beats  paper ");
-      return playerScore() ;
+        console.log(`updating the score of the player ${playerPoints +=1} points`)
+        
 
     }
     else if (playerSelection==="scissors" && computerSelection==="rock"){
         console.log( "you lost! rock beats scissors  ");
-      return aiScore() ;
+        console.log(`updating the score of the computer ${aiPoints +=1}points`)
+       
     }
     else if (playerSelection==="scissors" && computerSelection==="scissors"){
       return "Tie game! you both picked scissors ";
@@ -62,22 +72,13 @@ function playRound(playerSelection,computerSelection) {
 
     }
     else if(playerSelection !=="rock","paper","scissors"){ // check for spelling mistakes
-        console.log(`you entered the word ${playerSelection}`)
-        return"make sure you spelled the word 'rock' 'paper' or 'scissors' correctly"
+        console.log(`error you entered the word ${playerSelection}`);
+        return"make sure you spelled the word 'rock' 'paper' or 'scissors' correctly";
     }
-    
-}
-let aiPoints =0;
-let playerPoints = 0;
-//2 helper functions to keep track of score and give points
-function aiScore(){
+    return `\nhere's the current score \ncomputer:${aiPoints} pts and player:${playerPoints} pts`;
    
-    return `the computer now has ${aiPoints +=1} pts`;
 }
-function playerScore(){
-   
-    return `the player now has ${playerPoints +=1}pts `
-}
+
 
 //I'll make a function that plays five rounds of the game
 //I'll create a function called game() that will have a for loop that calls playRound() 5 times
@@ -97,3 +98,13 @@ for (let i=0;i<5;i++){
 }
 game()
 
+//after calling the function gamne() that plays 5 round i'll check to see who had more points
+if(aiPoints>playerPoints){
+    console.log(`\nthe ai won it has a total of ${aiPoints} pts`)
+}
+else if (playerPoints>aiPoints){
+    console.log(`\nthe player won they have a total of ${playerPoints} pts`)
+}
+else if (playerPoints===aiPoints){
+    console.log(`\nYou both have an equal amount of points the player has ${playerPoints} total pts and the ai has ${aiPoints} total pts `)
+}
