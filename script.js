@@ -1,7 +1,7 @@
 // making a simple rock-paper-scissors game
 
 //1)first function getComputerChoice() will return rock paper or scissor
-//I will pass this function as 2nd argument of firstRound()
+//I will pass this function as 2nd argument of playRound()
 
 function getComputerChoice(){
     //gets a random value from the array and returns the value that was picked
@@ -12,11 +12,11 @@ function getComputerChoice(){
 }
 
 
-//create global variables that will store player and ai points and at the end we will show a winner
+//create global variables that will store player and ai points and at the end I'll show a winner
 let aiPoints =0; // when computer wins a round add + 1 to this inside of playRound()
 let playerPoints=0;// when player wins a round add + 1 to this inside of playRound()
 
-// 2) now we create a function to play a single round of the game, it will take 2 parameters
+// 2) now I'll create a function to play a single round of the game, it will take 2 parameters
 function playRound(playerSelection,computerSelection) {
     //displays what the player and the computer picked,compares them and returns a string saying you won,lost or tied.
    // keeps track of the score, by showing how many  points the ai and player has after each round
@@ -25,55 +25,55 @@ function playRound(playerSelection,computerSelection) {
     
     if(playerSelection==="rock" && computerSelection==="paper"){
         console.log( "you lost! paper beats rock"); // put this console is func aiscore or playerscore
-        console.log(`updating the score of the computer ${aiPoints +=1} points`)
+        console.log(`updating the score of the computer ${aiPoints +=1} point`);
         
     }
     
     else if (playerSelection==="rock" && computerSelection==="scissors")
     {
         console.log( "you won! rock beats scissors  ");
-        console.log(`updating the score of the player ${playerPoints +=1} points`)
+        console.log(`updating the score of the player ${playerPoints +=1} point`);
         
     }
     else if (playerSelection==="paper" && computerSelection==="rock"){
         console.log( "you won! paper beats rock");
-        console.log(`updating the score of the player ${playerPoints +=1} points`)
+        console.log(`updating the score of the player ${playerPoints +=1} point`);
         
 
     }
     else if (playerSelection==="paper" && computerSelection==="scissors"){
         console.log( "you lost! scissors beats paper ");
-        console.log(`updating the score of the computer ${aiPoints +=1} points`)
+        console.log(`updating the score of the computer ${aiPoints +=1} point`);
         
     }
     else if (playerSelection==="scissors" && computerSelection==="paper"){
         console.log( "you won! scissors beats  paper ");
-        console.log(`updating the score of the player ${playerPoints +=1} points`)
+        console.log(`updating the score of the player ${playerPoints +=1} point`);
         
 
     }
     else if (playerSelection==="scissors" && computerSelection==="rock"){
         console.log( "you lost! rock beats scissors  ");
-        console.log(`updating the score of the computer ${aiPoints +=1}points`)
+        console.log(`updating the score of the computer ${aiPoints +=1}point`);
        
     }
     else if (playerSelection==="scissors" && computerSelection==="scissors"){
-      return "Tie game! you both picked scissors ";
+      console.log( "Tie game! you both picked scissors ");
         
     }
     else if (playerSelection==="paper" && computerSelection==="paper"){
-      return "Tie game! you both picked paper";
+      console.log( "Tie game! you both picked paper");
        
 
     }
     else if (playerSelection==="rock" && computerSelection==="rock"){
-       return "Tie game! you both picked rock ";
+       console.log( "Tie game! you both picked rock ");
         
 
     }
     else if(playerSelection !=="rock","paper","scissors"){ // check for spelling mistakes
         console.log(`error you entered the word ${playerSelection}`);
-        return"make sure you spelled the word 'rock' 'paper' or 'scissors' correctly";
+        console.log("make sure you spelled the word 'rock' 'paper' or 'scissors' correctly");
     }
     return `\nhere's the current score \ncomputer:${aiPoints} pts and player:${playerPoints} pts`;
    
@@ -88,10 +88,10 @@ function game(){
 // by prompting the user for an input and by calling playRound() five times inside of a for loop 
 
 for (let i=0;i<5;i++){
-    let playerMovePicked=prompt("pick one option between rock,paper or scissors,")
-    let playerMovePickedLower=playerMovePicked.toLowerCase()
-    console.log("\n")// blank line to separate each rounds
-    console.log (playRound(playerMovePickedLower,getComputerChoice()))
+    let playerMovePicked=prompt("pick one option between rock,paper or scissors,");
+    let playerMovePickedLower=playerMovePicked.toLowerCase();
+    console.log("\n");// blank line to separate each rounds
+    console.log (playRound(playerMovePickedLower,getComputerChoice()));
     
 }
 
@@ -100,11 +100,11 @@ game()
 
 //after calling the function gamne() that plays 5 round i'll check to see who had more points
 if(aiPoints>playerPoints){
-    console.log(`\nthe ai won it has a total of ${aiPoints} pts`)
+    console.log(`\nthe ai won it has a total of ${aiPoints} pts`);
 }
 else if (playerPoints>aiPoints){
-    console.log(`\nthe player won they have a total of ${playerPoints} pts`)
+    console.log(`\nthe player won they have a total of ${playerPoints} pts`);
 }
 else if (playerPoints===aiPoints){
-    console.log(`\nYou both have an equal amount of points the player has ${playerPoints} total pts and the ai has ${aiPoints} total pts `)
+    console.log(`\nYou both have an equal amount of points the player has ${playerPoints} total pts and the ai has ${aiPoints} total pts `);
 }
