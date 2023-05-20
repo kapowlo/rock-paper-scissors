@@ -20,91 +20,144 @@ let playerPoints=0;// when player wins a round add + 1 to this inside of playRou
 function playRound(playerSelection,computerSelection) {
     //displays what the player and the computer picked,compares them and returns a string saying you won,lost or tied.
    // keeps track of the score, by showing how many  points the ai and player has after each round
-    console.log(`the player has chosen ${playerSelection}`);
+    console.log(`\nthe player has chosen ${playerSelection}`);
     console.log(`the computer has chosen ${computerSelection}`);
     
     if(playerSelection==="rock" && computerSelection==="paper"){
-        console.log( "you lost! paper beats rock"); // put this console is func aiscore or playerscore
-        console.log(`updating the score of the computer ${aiPoints +=1} point`);
+     textPara.textContent= "you lost! paper beats rock "; // put this console is func aiscore or playerscore
+      updateScorePara.textContent=`updating the score of the computer ${aiPoints +=1} point`;
         
     }
     
     else if (playerSelection==="rock" && computerSelection==="scissors")
     {
-        console.log( "you won! rock beats scissors  ");
-        console.log(`updating the score of the player ${playerPoints +=1} point`);
+      textPara.textContent= "you won! rock beats scissors  ";
+       updateScorePara.textContent=`updating the score of the player ${playerPoints +=1} point`;
         
     }
     else if (playerSelection==="paper" && computerSelection==="rock"){
-        console.log( "you won! paper beats rock");
-        console.log(`updating the score of the player ${playerPoints +=1} point`);
+      textPara.textContent= "you won! paper beats rock ";
+       updateScorePara.textContent=`updating the score of the player ${playerPoints +=1} point`;
         
 
     }
     else if (playerSelection==="paper" && computerSelection==="scissors"){
-        console.log( "you lost! scissors beats paper ");
-        console.log(`updating the score of the computer ${aiPoints +=1} point`);
+       textPara.textContent= "you lost! scissors beats paper ";
+        updateScorePara.textContent =`updating the score of the computer ${aiPoints +=1} point`;
         
     }
     else if (playerSelection==="scissors" && computerSelection==="paper"){
-        console.log( "you won! scissors beats  paper ");
-        console.log(`updating the score of the player ${playerPoints +=1} point`);
+       textPara.textContent= "you won! scissors beats  paper ";
+        updateScorePara.textContent=`updating the score of the player ${playerPoints +=1} point`;
         
 
     }
     else if (playerSelection==="scissors" && computerSelection==="rock"){
-        console.log( "you lost! rock beats scissors  ");
-        console.log(`updating the score of the computer ${aiPoints +=1}point`);
+       textPara.textContent= "you lost! rock beats scissors  ";
+        updateScorePara.textContent=`updating the score of the computer ${aiPoints +=1} point`;
        
     }
     else if (playerSelection==="scissors" && computerSelection==="scissors"){
-      console.log( "Tie game! you both picked scissors ");
-        
+    textPara.textContent= "Tie game! you both picked scissors ";
+    updateScorePara.textContent="no updates to the score";    
     }
     else if (playerSelection==="paper" && computerSelection==="paper"){
-      console.log( "Tie game! you both picked paper");
-       
+     textPara.textContent= "Tie game! you both picked paper";
+     updateScorePara.textContent="no updates to the score";  
 
     }
     else if (playerSelection==="rock" && computerSelection==="rock"){
-       console.log( "Tie game! you both picked rock ");
-        
+     textPara.textContent= "Tie game! you both picked rock ";
+     updateScorePara.textContent="no updates to the score";   
 
     }
-    else if(playerSelection !=="rock","paper","scissors"){ // check for spelling mistakes
-        console.log(`error you entered the word ${playerSelection}`);
-        console.log("make sure you spelled the word 'rock' 'paper' or 'scissors' correctly");
-    }
-    return `\nhere's the current score \ncomputer:${aiPoints} pts and player:${playerPoints} pts`;
+    //call check score func
+   
+    return`The current score \ncomputer:${aiPoints} pts and player:${playerPoints} pts`;
    
 }
 
 
-//I'll make a function that plays five rounds of the game
-//I'll create a function called game() that will have a for loop that calls playRound() 5 times
-//the user will also be asked 5 times to chose between rock paper scissors
-function game(){  
-//this function will allow us to play five rounds of rock paper scissors 
-// by prompting the user for an input and by calling playRound() five times inside of a for loop 
 
-for (let i=0;i<5;i++){
-    let playerMovePicked=prompt("pick one option between rock,paper or scissors,");
-    let playerMovePickedLower=playerMovePicked.toLowerCase();
-    console.log("\n");// blank line to separate each rounds
-    console.log (playRound(playerMovePickedLower,getComputerChoice()));
-    
+// create div  then append it to the document so I can actually see it
+const div = document.createElement("div");
+const textPara = document.createElement("div"); // this will hold the text that says who won the current round 
+const updateScorePara = document.createElement("p");// this will update the score every round 
+const winnerPara = document.createElement("p");// show the final winner
+document.body.append(div,textPara,updateScorePara,winnerPara);
+
+// create some button for rock paper and scissors and add text to each of them
+const rockBtn = document.createElement("button");
+rockBtn.textContent ="Rock";
+
+const paperBtn = document.createElement("button");
+paperBtn.textContent="Select Paper";
+const scissorsBtn = document.createElement("button");
+scissorsBtn.textContent="Select scissors";
+
+// add each button to the div used append to add multiple at once.
+div.append(rockBtn,paperBtn,scissorsBtn);
+
+// when user clicks on any of these buttons call function to play round 
+//the 1st arg is the player's choice based on which button they clicked
+// we play no more than 5 rounds, counter variable will count how many times the buttons we're clicked
+//at 5 clicks delete the buttons and declare the winner!
+let counter=0;
+rockBtn.addEventListener("click",()=>{
+        counter++;
+        console.log(playRound("rock",getComputerChoice()));
+        if(counter==5){
+           console.log("we've played enough rounds for now game is done!")
+           div.remove(rockBtn,paperBtn,scissorsBtn);
+           textPara.remove();
+           updateScorePara.remove(); 
+
+            //call check score func at the end
+            checkScore();
+            
+        } 
+})
+paperBtn.addEventListener("click",()=>{
+        counter++;
+        console.log(playRound("paper",getComputerChoice()));
+        if(counter==5){
+           console.log("we've played enough rounds for now game is done!")
+           div.remove(rockBtn,paperBtn,scissorsBtn);
+           textPara.remove(); 
+           updateScorePara.remove();
+             //call check score func at the end
+             checkScore();
+        } 
+})
+scissorsBtn.addEventListener("click",()=>{
+        counter++;
+        console.log(playRound("scissors",getComputerChoice()));
+        if(counter==5){
+           console.log("we've played enough rounds for now game is done!")
+           div.remove(rockBtn,paperBtn,scissorsBtn);
+           textPara.remove(); 
+           updateScorePara.remove();
+             //call check score func at the end
+             checkScore();
+        } 
+})
+
+
+
+//call this function after 5 rounds 
+function checkScore(){
+    if(aiPoints>playerPoints){
+        winnerPara.textContent=`\nThe ai won it has accumulated a total of ${aiPoints} pts`;
+        winnerPara.style.color="blue";
+    }
+    else if (playerPoints>aiPoints){
+        winnerPara.textContent=`\nYou won you have accumulated a total of ${playerPoints} pts`;
+        winnerPara.style.color ="green"
+    }
+    else{
+        winnerPara.textContent=`\n it's a tie player:${playerPoints} pts computer:${aiPoints} pts`
+        winnerPara.style.color ="brown"
+    }
 }
 
-}
-game()
 
-//after calling the function gamne() that plays 5 round i'll check to see who had more points
-if(aiPoints>playerPoints){
-    console.log(`\nthe ai won it has a total of ${aiPoints} pts`);
-}
-else if (playerPoints>aiPoints){
-    console.log(`\nthe player won they have a total of ${playerPoints} pts`);
-}
-else if (playerPoints===aiPoints){
-    console.log(`\nYou both have an equal amount of points the player has ${playerPoints} total pts and the ai has ${aiPoints} total pts `);
-}
