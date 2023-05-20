@@ -71,27 +71,32 @@ function playRound(playerSelection,computerSelection) {
      updateScorePara.textContent="no updates to the score";   
 
     }
-    //call check score func
-   
+    
     return`The current score \ncomputer:${aiPoints} pts and player:${playerPoints} pts`;
    
 }
 
 
 
-// create div  then append it to the document so I can actually see it
+// create a div, inside this div I will have three buttons
 const div = document.createElement("div");
-const textPara = document.createElement("div"); // this will hold the text that says who won the current round 
+
+const textPara = document.createElement("p"); // this will hold the text that says who won the current round 
+
 const updateScorePara = document.createElement("p");// this will update the score every round 
+
 const winnerPara = document.createElement("p");// show the final winner
+
+// append these elements to the body
 document.body.append(div,textPara,updateScorePara,winnerPara);
 
 // create some button for rock paper and scissors and add text to each of them
 const rockBtn = document.createElement("button");
-rockBtn.textContent ="Rock";
+rockBtn.textContent ="Select rock";
 
 const paperBtn = document.createElement("button");
 paperBtn.textContent="Select Paper";
+
 const scissorsBtn = document.createElement("button");
 scissorsBtn.textContent="Select scissors";
 
@@ -107,7 +112,6 @@ rockBtn.addEventListener("click",()=>{
         counter++;
         console.log(playRound("rock",getComputerChoice()));
         if(counter==5){
-           console.log("we've played enough rounds for now game is done!")
            div.remove(rockBtn,paperBtn,scissorsBtn);
            textPara.remove();
            updateScorePara.remove(); 
@@ -121,7 +125,6 @@ paperBtn.addEventListener("click",()=>{
         counter++;
         console.log(playRound("paper",getComputerChoice()));
         if(counter==5){
-           console.log("we've played enough rounds for now game is done!")
            div.remove(rockBtn,paperBtn,scissorsBtn);
            textPara.remove(); 
            updateScorePara.remove();
@@ -133,7 +136,6 @@ scissorsBtn.addEventListener("click",()=>{
         counter++;
         console.log(playRound("scissors",getComputerChoice()));
         if(counter==5){
-           console.log("we've played enough rounds for now game is done!")
            div.remove(rockBtn,paperBtn,scissorsBtn);
            textPara.remove(); 
            updateScorePara.remove();
