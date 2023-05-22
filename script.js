@@ -113,9 +113,6 @@ rockBtn.addEventListener("click",()=>{
         console.log(playRound("rock",getComputerChoice()));
         if(counter==5){
            div.remove(rockBtn,paperBtn,scissorsBtn);
-           textPara.remove();
-           updateScorePara.remove(); 
-
             //call check score func at the end
             checkScore();
             
@@ -126,8 +123,6 @@ paperBtn.addEventListener("click",()=>{
         console.log(playRound("paper",getComputerChoice()));
         if(counter==5){
            div.remove(rockBtn,paperBtn,scissorsBtn);
-           textPara.remove(); 
-           updateScorePara.remove();
              //call check score func at the end
              checkScore();
         } 
@@ -137,8 +132,6 @@ scissorsBtn.addEventListener("click",()=>{
         console.log(playRound("scissors",getComputerChoice()));
         if(counter==5){
            div.remove(rockBtn,paperBtn,scissorsBtn);
-           textPara.remove(); 
-           updateScorePara.remove();
              //call check score func at the end
              checkScore();
         } 
@@ -150,15 +143,24 @@ scissorsBtn.addEventListener("click",()=>{
 function checkScore(){
     if(aiPoints>playerPoints){
         winnerPara.textContent=`\nThe ai won it has accumulated a total of ${aiPoints} pts`;
-        winnerPara.style.color="blue";
+        winnerPara.style.color="darkblue";
+        winnerPara.style.fontSize="24px";
+        winnerPara.style.border="3px dashed rgb(70,130,180)"
+       
     }
     else if (playerPoints>aiPoints){
         winnerPara.textContent=`\nYou won you have accumulated a total of ${playerPoints} pts`;
         winnerPara.style.color ="green"
+        winnerPara.style.fontSize="24px";
+        winnerPara.style.border="3px dashed rgb(46,139,87)"
+       
     }
     else{
         winnerPara.textContent=`\n it's a tie player:${playerPoints} pts computer:${aiPoints} pts`
         winnerPara.style.color ="brown"
+        winnerPara.style.fontSize="24px";
+        winnerPara.style.border="3px dashed rgb(0,0,0)"
+       
     }
 }
 
